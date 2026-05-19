@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitchell Muyu — Software Engineer</title>
+<meta name="description" content="Software Engineer specialising in AI, Automation & IT Systems. Based in Nairobi, Kenya. Open to internships from June 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --surface: #16161a;
+    --surface2: #1e1e24;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #f0ede8;
+    --muted: #888882;
+    --hint: #555550;
+    --accent: #7f77dd;
+    --accent-light: #afa9ec;
+    --accent-bg: rgba(127,119,221,0.12);
+    --green: #1d9e75;
+    --green-bg: rgba(29,158,117,0.12);
+    --green-text: #5dcaa5;
+    --amber: #ef9f27;
+    --amber-bg: rgba(239,159,39,0.1);
+    --amber-text: #fac775;
+    --blue-tag: rgba(55,138,221,0.15);
+    --blue-tag-text: #85b7eb;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .container {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .container { position: relative; z-index: 1; }
+
+  /* header */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    border: 1.5px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--accent-light);
+    flex-shrink: 0;
+  }
+
+  .header-text h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.1;
+  }
+
+  .header-text p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 5px;
+    line-height: 1.5;
+  }
+
+  .open-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-bg);
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 0.5px solid rgba(29,158,117,0.3);
+    margin-top: 8px;
+  }
+
+  .open-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* sections */
+  .card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 10px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .card:hover {
+    border-color: var(--border2);
+    transition: border-color 0.2s ease;
+  }
+
+  .summary-text {
+    font-size: 14px;
+    color: #b8b5ae;
+    line-height: 1.75;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--hint);
+    margin-top: 10px;
+  }
+
+  .meta-row svg { flex-shrink: 0; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--hint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 1.4rem 0 0.7rem;
+  }
+
+  /* skills */
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .skill {
+    display: inline-block;
+    background: var(--surface2);
+    color: var(--muted);
+    font-size: 12px;
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border);
+  }
+
+  .skill.highlight {
+    background: var(--accent-bg);
+    color: var(--accent-light);
+    border-color: rgba(127,119,221,0.25);
+  }
+
+  /* projects */
+  .project-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .wip-badge {
+    font-size: 10px;
+    font-weight: 400;
+    background: var(--amber-bg);
+    color: var(--amber-text);
+    padding: 2px 8px;
+    border-radius: 10px;
+    border: 0.5px solid rgba(239,159,39,0.2);
+  }
+
+  .project-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.65;
+  }
+
+  .stack-wrap { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+
+  .stack-tag {
+    font-size: 11px;
+    background: var(--blue-tag);
+    color: var(--blue-tag-text);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  /* contact */
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    margin-bottom: 8px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--border2);
+    background: var(--surface2);
+  }
+
+  .contact-link .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .contact-link .link-text { flex: 1; }
+  .contact-link .link-label { font-size: 10px; color: var(--hint); display: block; margin-bottom: 1px; }
+  .contact-link .link-value { font-size: 13px; color: var(--text); }
+
+  .icon-email { background: rgba(127,119,221,0.15); }
+  .icon-wa { background: rgba(29,158,117,0.15); }
+  .icon-li { background: rgba(55,138,221,0.15); }
+  .icon-gh { background: rgba(255,255,255,0.06); }
+  .icon-cv { background: rgba(239,159,39,0.12); }
+
+  .arrow { color: var(--hint); font-size: 16px; }
+
+  /* QR */
+  .qr-section {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  #qr-canvas {
+    border-radius: 10px;
+    display: block;
+  }
+
+  .qr-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .copy-url-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 7px 16px;
+    background: var(--surface2);
+    border: 0.5px solid var(--border2);
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .copy-url-btn:hover { background: var(--accent-bg); color: var(--accent-light); }
+
+  #copied-msg {
+    font-size: 11px;
+    color: var(--green-text);
+    margin-top: 6px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* footer */
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--hint);
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.2s; }
+
+  @media (max-width: 480px) {
+    .header-text h1 { font-size: 22px; }
+    .avatar { width: 60px; height: 60px; font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="avatar">MM</div>
+    <div class="header-text">
+      <h1>Mitchell Muyu</h1>
+      <p>Software Engineer · AI & Automation · IT Systems</p>
+      <span class="open-badge">Open to internships</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="summary-text">Early-career software engineer specialising in AI systems, automation, and data-driven applications. Built MYRAA — a full AI-powered road safety platform — independently, from architecture to deployment. Seeking internships in Software Engineering, AI, or IT Systems.</p>
+    <div class="meta-row">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Nairobi, Kenya &nbsp;·&nbsp; Available from June 2026
+    </div>
+  </div>
+
+  <div class="section-label">Skills</div>
+  <div class="card" style="padding: 1rem 1.25rem">
+    <div class="skills-wrap">
+      <span class="skill highlight">Python</span>
+      <span class="skill highlight">AI & Automation</span>
+      <span class="skill highlight">n8n</span>
+      <span class="skill highlight">REST APIs</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">SQL</span>
+      <span class="skill">Node.js</span>
+      <span class="skill">React</span>
+      <span class="skill">MySQL</span>
+      <span class="skill">Git / GitHub</span>
+      <span class="skill">Linux</span>
+      <span class="skill">System Design</span>
+      <span class="skill">Data Pipelines</span>
+      <span class="skill">Azure (learning)</span>
+      <span class="skill">Blender 3D</span>
+    </div>
+  </div>
+
+  <div class="section-label">Key projects</div>
+
+  <div class="card">
+    <p class="project-title">MYRAA — AI Road Safety System</p>
+    <p class="project-desc">Full data pipeline: ingestion → processing → storage → automated delivery. Integrates live weather & air quality APIs, classifies road conditions, and sends personalised email reports via n8n. Designed for Azure cloud deployment.</p>
+    <div class="stack-wrap">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">REST APIs</span>
+      <span class="stack-tag">n8n</span>
+      <span class="stack-tag">Google Sheets</span>
+      <span class="stack-tag">Email Automation</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="project-title">Mood-Based Music App <span class="wip-badge">In progress</span></p>
+    <p class="project-desc">Evolving from a Python CLI to a full React web app with mood-detection and music recommendation logic.</p>
+    <div class="stack-wrap">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">React</span>
+      <span class="stack-tag">Node.js</span>
+      <span class="stack-tag">API Integration</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="project-title">Numerical Methods Solver</p>
+    <p class="project-desc">Implemented Gaussian elimination, Euler's Method & Lagrange Interpolation with accuracy and efficiency benchmarking.</p>
+    <div class="stack-wrap">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">Mathematical Modelling</span>
+    </div>
+  </div>
+
+  <div class="section-label">Contact & links</div>
+
+  <a class="contact-link" href="mailto:mitchellmuyumwa@gmail.com">
+    <div class="icon icon-email">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#afa9ec" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    </div>
+    <div class="link-text">
+      <span class="link-label">Email</span>
+      <span class="link-value">mitchellmuyumwa@gmail.com</span>
+    </div>
+    <span class="arrow">›</span>
+  </a>
+
+  <a class="contact-link" href="https://wa.me/254793610212" target="_blank" rel="noopener">
+    <div class="icon icon-wa">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#5dcaa5" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    </div>
+    <div class="link-text">
+      <span class="link-label">WhatsApp</span>
+      <span class="link-value">+254 793 610 212</span>
+    </div>
+    <span class="arrow">›</span>
+  </a>
+
+  <a class="contact-link" href="https://linkedin.com/in/muyu-mitchell/" target="_blank" rel="noopener">
+    <div class="icon icon-li">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#85b7eb" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
+    </div>
+    <div class="link-text">
+      <span class="link-label">LinkedIn</span>
+      <span class="link-value">muyu-mitchell</span>
+    </div>
+    <span class="arrow">›</span>
+  </a>
+
+  <a class="contact-link" href="https://github.com/muyumitchell/" target="_blank" rel="noopener">
+    <div class="icon icon-gh">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#888882" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+    </div>
+    <div class="link-text">
+      <span class="link-label">GitHub</span>
+      <span class="link-value">muyumitchell</span>
+    </div>
+    <span class="arrow">›</span>
+  </a>
+
+  <a class="contact-link" href="https://drive.google.com/file/d/1bSd_xBRKGiCRflF3VDQthspl7ZZgIOu-/view?usp=drivesdk" target="_blank" rel="noopener">
+    <div class="icon icon-cv">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#fac775" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+    </div>
+    <div class="link-text">
+      <span class="link-label">Curriculum Vitae</span>
+      <span class="link-value">Download CV (PDF)</span>
+    </div>
+    <span class="arrow">›</span>
+  </a>
+
+  <div class="section-label">Scan to connect</div>
+
+  <div class="qr-section">
+    <canvas id="qr-canvas"></canvas>
+    <p class="qr-label">Scan to view this profile</p>
+    <button class="copy-url-btn" id="copy-btn">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      Copy page link
+    </button>
+    <div id="copied-msg">Link copied!</div>
+  </div>
+
+  <div class="footer">
+    Mitchell Muyu · Nairobi, Kenya · mitchellmuyumwa@gmail.com
+  </div>
+
+</div>
+
+<script>
+  const PAGE_URL = window.location.href;
+  const canvas = document.getElementById("qr-canvas");
+  const size = 200;
+  canvas.width = size;
+  canvas.height = size;
+
+  try {
+    const tmp = document.createElement("div");
+    new QRCode(tmp, {
+      text: PAGE_URL,
+      width: size,
+      height: size,
+      colorDark: "#afa9ec",
+      colorLight: "#16161a",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+    setTimeout(() => {
+      const src = tmp.querySelector("img") || tmp.querySelector("canvas");
+      const ctx = canvas.getContext("2d");
+      const draw = () => {
+        if (src.tagName === "IMG") {
+          const i = new Image();
+          i.onload = () => { ctx.drawImage(i, 0, 0, size, size); overlay(ctx); };
+          i.src = src.src;
+        } else {
+          ctx.drawImage(src, 0, 0, size, size);
+          overlay(ctx);
+        }
+      };
+      draw();
+    }, 400);
+  } catch(e) { console.warn("QR error", e); }
+
+  function overlay(ctx) {
+    const cx = size/2, cy = size/2, r = 24;
+    ctx.fillStyle = "#16161a";
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI*2);
+    ctx.fill();
+    ctx.strokeStyle = "#7f77dd";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.fillStyle = "#afa9ec";
+    ctx.font = "500 12px 'DM Sans', sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("MM", cx, cy);
+  }
+
+  document.getElementById("copy-btn").addEventListener("click", () => {
+    navigator.clipboard.writeText(PAGE_URL).then(() => {
+      const msg = document.getElementById("copied-msg");
+      msg.style.opacity = "1";
+      setTimeout(() => msg.style.opacity = "0", 2000);
+    });
+  });
+</script>
+</body>
+</html>
