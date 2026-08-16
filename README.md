@@ -78,7 +78,11 @@
   and pushes the output to an "output" branch, then embed it below.
 -->
 
-<img src="https://raw.githubusercontent.com/muyumitchell/muyumitchell/output/github-contribution-grid-snake.svg" alt="snake animation"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muyumitchell/muyumitchell/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muyumitchell/muyumitchell/output/github-snake.svg" />
+  <img alt="Snake eating my contributions" src="https://raw.githubusercontent.com/muyumitchell/muyumitchell/output/github-snake.svg" />
+</picture>
 
 </div>
 
