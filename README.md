@@ -25,7 +25,7 @@
 <tr>
 <td width="65%" valign="top">
 
-- 🔭 I'm currently building **[Maritime AI Platform](https://github.com/muyumitchell/maritime-ai)** — an AI-powered fleet management system with 21 live endpoints ([live demo](https://maritime-ai-production-8e3a.up.railway.app))
+
 - 🔭 I'm currently building **[Maritime AI Platform](https://github.com/muyumitchell/maritime-ai)** — an AI-powered fleet management system with 21 live endpoints ([live demo](https://maritime-ai-production-8e3a.up.railway.app))
 - 🌱 My first AI project, **MYRAA**, an AI road safety pipeline for Meru County, is where it all started
 - 👯 I'm looking to collaborate on **AI engineering & full-stack projects**
