@@ -26,12 +26,13 @@
 <td width="65%" valign="top">
 
 - 🔭 I'm currently building **[Maritime AI Platform](https://github.com/muyumitchell/maritime-ai)** — an AI-powered fleet management system with 21 live endpoints ([live demo](https://maritime-ai-production-8e3a.up.railway.app))
-- 🌱 I'm also working on **MYRAA**, an AI road safety pipeline for Meru County
+- 🔭 I'm currently building **[Maritime AI Platform](https://github.com/muyumitchell/maritime-ai)** — an AI-powered fleet management system with 21 live endpoints ([live demo](https://maritime-ai-production-8e3a.up.railway.app))
+- 🌱 My first AI project, **MYRAA**, an AI road safety pipeline for Meru County, is where it all started
 - 👯 I'm looking to collaborate on **AI engineering & full-stack projects**
-- 💬 Ask me about **Node.js/Express, PostgreSQL, Groq API (LLaMA 3.3 70B), Python, Django, React**
+- 💬 Ask me about **Node.js/Express, PostgreSQL, Groq API (LLaMA 3.3 70B), Python, Django, React, Claude Code, Anthropic's Claude Code in Action course, and 3D work in Blender**
 - 🤖 Built three deployed client-facing AI chatbots (Kova, Sage, Remi) with streaming responses and multi-agent architecture
 - 📫 Connect with me on **[LinkedIn](https://www.linkedin.com/in/muyu-mitchell)**
-- 🎯 Goal: AI engineering & full-stack roles in Kenya and the UAE
+- 🎯 Goal: AI engineering & full-stack roles — open to working with companies globally
 
 </td>
 <td width="35%" valign="top" align="center">
